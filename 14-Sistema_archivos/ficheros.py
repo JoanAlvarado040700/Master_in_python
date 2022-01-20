@@ -79,6 +79,6 @@ if not os.path.isdir("./mi_carpeta"):
 else:
     print("Ya existe la carpeta")
 
-#eliminar carpeta
+#------------->liminar carpeta
 
-os.rmdir("./mi_carpeta")
+#os.rmdir("./mi_carpeta")
