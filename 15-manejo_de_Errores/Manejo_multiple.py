@@ -7,6 +7,8 @@ try:
 except TypeError:
     print("Debes de convertir tus cadenas a enteros")
 #except ValueError:
- #   print("Introduce un numero correcto")
+#   print("Introduce un numero correcto")
 except Exception as e:
     print("ha ocurrido un error : ", type(e).__name__)
+
+    
