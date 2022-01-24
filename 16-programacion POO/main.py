@@ -49,6 +49,8 @@ def mostrarDatos(obj):
 
 mostrarDatos(persona.getpresentar())
 print("************************************************")
+
+#Objeto 2: 
 print("Objeto 2: ")
 persona2 = Person()
 persona2.setpresentar("Sebastian","Negros",157)
