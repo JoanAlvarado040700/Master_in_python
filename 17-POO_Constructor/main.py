@@ -23,3 +23,4 @@ personas2 = Person("Sebas",1.57,"Negros")
 mostrarDatos(personas2.getpresentar())
 
 print(persona.getNumero(),"<-- Este es un atributo privado")
+
