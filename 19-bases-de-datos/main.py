@@ -11,7 +11,7 @@ database = mysql.connector.connect(
 )
 
 
-cursor = database.cursor()
+cursor = database.cursor(buffered=True)
 
 
 #Crear tablas 
@@ -58,3 +58,16 @@ resul = cursor.fetchall()
 
 for coche in resul:
     print(coche)
+
+
+#Borrar datos 
+#-----------------------------------------------------------
+cursor.execute("DELETE FROM vehiculos WHERE precio> 45000")
+database.commit()
+
+print(cursor.rowcount, "Borrado !!")
+
+#Actualizar datos
+
+cursor.execute("UPDATE vehiculos SET modelo = 'Muy velozXD' WHERE modelo = 'Saxo' ")
+database.commit()
