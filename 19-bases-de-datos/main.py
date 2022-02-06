@@ -71,3 +71,4 @@ print(cursor.rowcount, "Borrado !!")
 
 cursor.execute("UPDATE vehiculos SET modelo = 'Muy velozXD' WHERE modelo = 'Saxo' ")
 database.commit()
+
