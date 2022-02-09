@@ -8,13 +8,45 @@ database = mysql.connector.connect(
     user = "root",
     password = "",
     database = "master"
+    
 )
 
 
 cursor = database.cursor(buffered=True)
 
 
-#Crear tablas 
+
+#database.commit()
+
+
+
+print("""
+
+    Inserte datos: 
+    1-> marca de un vehiculo
+    2-> Modelo
+    3-> precio
+
+
+""")
+
+def instert(self):
+
+    marca = input("Ingrese una marca de vehiculo: ")
+    modelo = input("ingrese el modelo: ")
+    precio = int(input("Ingrese el precio: "))
+
+
+    sql = "INSERT INTO vehiculos(null, marca, modelo, precio) values('{}','{}','{}').format(marca,modelo,precio) "
+    self.cursor.execute(sql)
+    database.commit()
+
+
+
+instert()
+#Insertar datos en una tabla 
+'''
+
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS vehiculos(
     id int(10) auto_increment not null,
@@ -27,15 +59,16 @@ cursor.execute("""CREATE TABLE IF NOT EXISTS vehiculos(
 """
 )
 
-#Insertar datos en una tabla 
-'''
 
-cursor.execute("INSERT INTO vehiculos VALUES(null,'opel','astra',1723.4 ) ")
-database.commit()
+
 
 '''
+
+
 
 #Insertar de manera masiva 
+
+
 
 '''
 
@@ -49,7 +82,7 @@ coches = [
 
 cursor.executemany("INSERT INTO vehiculos VALUE(null,%s,%s,%s)", coches)
 database.commit()
-'''
+
 
 
 cursor.execute("SELECT * FROM vehiculos ")
@@ -72,3 +105,5 @@ print(cursor.rowcount, "Borrado !!")
 cursor.execute("UPDATE vehiculos SET modelo = 'Muy velozXD' WHERE modelo = 'Saxo' ")
 database.commit()
 
+
+'''

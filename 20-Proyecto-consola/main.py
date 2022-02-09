@@ -8,7 +8,8 @@ Proyecto python y Mysql:
 -> crear nota, mostrar notas y borrarlas 
 
 '''
-from user import acciones
+from Usuarios import acciones
+
 print(""" 
 
 Acciones disponibles: 
@@ -18,7 +19,7 @@ Acciones disponibles:
 
 """)
 
-realizar = acciones.acciones()
+realizar = acciones.Acciones()
 
 
 accion = input("Que desea realizar? ")
