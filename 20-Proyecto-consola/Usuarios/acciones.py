@@ -25,14 +25,18 @@ class Acciones:
     
     def login(self):
         print("Perfecto !!!, vamos a verificar tus datos...")
-        email = input("Introduce tu correo electronico: ")
-        password = input("Introduce tu contraseña: ")
+        try:
+            email = input("Introduce tu correo electronico: ")
+            password = input("Introduce tu contraseña: ")
 
-        usuario = modelo.User('', '', email, password)
-        login = usuario.identificar()
+            usuario = modelo.User('', '', email, password)
+            login = usuario.identificar()
 
-        if email == login[3]:
-            print(f"Bienvenido {login[1]}, al sistema te has registrado el {login[5]}")
-
+            if email == login[3]:
+                print(f"Bienvenido {login[1]}, al sistema te has registrado el {login[5]}")
+        except Exception as e:
+            print(type(e))
+            print(type(e).__name__) 
+            print(f"Login incorrecto, vuelve a intentar")
 
         
