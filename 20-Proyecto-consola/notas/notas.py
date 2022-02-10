@@ -20,3 +20,22 @@ class notes():
         database.commit()
 
         return [cursor.rowcount, self]
+
+    def listar(self):
+        sql = f"SELECT * FROM notas WHERE usuario_id = {self.usuario_id}"
+
+        cursor.execute(sql)
+        result = cursor.fetchall()
+
+        return result
+
+    def eliminar(self):
+        sql = f"DELETE FROM notas WHERE usuario_id = {self.usuario_id} AND titulo LIKE '%{self.titulo}%' "
+
+        cursor.execute(sql)
+        database.commit()
+
+        return [cursor.rowcount, self]
+
+
+

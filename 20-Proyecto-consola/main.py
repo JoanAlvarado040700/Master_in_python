@@ -10,9 +10,7 @@ Proyecto python y Mysql:
 '''
 from Usuarios import acciones
 
-print(""" 
-
-Acciones disponibles: 
+print(""" Acciones disponibles: 
 
     -> Registro
     -> Login

@@ -59,12 +59,12 @@ class Acciones:
 
 
         elif accion == 2: 
-            print("Mostrar notas ")
+            hacer.mostrar(usuario)
             self.proximasAcciones(usuario)
 
             
         elif accion == 3 : 
-            print("Que nota desea eliminar?")
+            hacer.borrar(usuario)
             self.proximasAcciones(usuario)
 
 
