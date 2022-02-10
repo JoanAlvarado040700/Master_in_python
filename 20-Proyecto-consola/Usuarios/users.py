@@ -7,6 +7,7 @@ import Usuarios.conexion as conexion
 connect = conexion.conectar()
 database = connect[0]
 cursor = connect[1]
+
 #print(database)
 
 class User:
