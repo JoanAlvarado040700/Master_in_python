@@ -1,8 +1,12 @@
 from tkinter import *
-
+from tkinter import messagebox as ms
 ventana = Tk()
-ventana.geometry("700x155")
-
+ventana.geometry("700x200")
+ventana.resizable(False,False)
+ventana.config(
+        relief= "groove",
+        bd = 3
+)
 # -------------------  Cabecera ----------------
 cab = Frame(ventana, width=200, height=50)
 cab.config(
@@ -63,14 +67,30 @@ texto.place(x=10, y= 8)
 #----------- Funciones ----------------------
 
 
-#def getDatos():
 
+
+def sumar():
+        resultado.set(float(numero1.get()) + float(numero2.get()))
+def resta():
+        resultado.set(float(numero1.get()) - float(numero2.get()))
+def multiplicar():
+        resultado.set(float(numero1.get()) * float(numero2.get()))
+def dividir():
+        resultado.set(float(numero1.get()) / float(numero2.get()))
+def mostrar():
+        ms.showinfo("Resultados","El resultado de la operacion es: {resultado.get()} ")
+
+
+numero1 = StringVar()
+numero2 = StringVar()
+
+resultado = StringVar()
 
 
 #-------------------------------------------
 
 
-num = Entry(cuadro,bd= 2 ) # --------- > Dato 1
+num = Entry(cuadro,bd= 2, textvariable = numero1 ) # --------- > Dato 1
 
 num.place(x = 150, y= 10) # Entrada de texto
 
@@ -83,10 +103,28 @@ texto.config(
 )
 texto.place(x=10, y= 55)
 
-num2 = Entry(cuadro,bd= 2)
+num2 = Entry(cuadro,bd= 2, textvariable = numero2)
 
-num2.place(x = 150, y= 57) # Entrada de texto
+num2.place(x = 150, y= 57) 
 
+
+
+
+# ---------------- Botones especiales
+
+
+
+boton = Button(cuadro, bd=5, text= "Suma ", width=8, height=2, activebackground="sky blue", command= sumar)
+boton.place(x= 20, y=90)
+
+boton = Button(cuadro, bd=5, text= "Resta",width=8, height=2,activebackground="sky blue", command= resta)
+boton.place(x= 95, y=90)
+
+boton = Button(cuadro, bd=5, text= "Multiplicar",width=8, height=2,activebackground="sky blue", command = multiplicar)
+boton.place(x= 170, y=90)
+
+boton = Button(cuadro, bd=5, text= "Dividir",width=8, height=2,activebackground="sky blue", command = dividir)
+boton.place(x= 245, y=90)
 
 #  *****************************************************************************
 
@@ -100,19 +138,16 @@ cuadro.pack_propagate(False)
 
 
 
-#-----------  Boton y salida de resultados ---------------------
+#-----------  salida de resultados ---------------------
 
-boton = Button(cuadro, bd=5, text= "Resultado")
-boton.pack(side= "top", anchor=CENTER)
-
-texto = Label(cuadro, text = "Resultado")
+texto = Label(cuadro, textvariable = resultado)
 texto.config(
         fg = "white",
         bg = "#084256645",
         font = ("bold",12)
 
 )
-texto.place(x= 90, y= 50)
+texto.pack(side = "left",anchor = CENTER)
 
 
 

@@ -40,7 +40,7 @@ class Calculadora:
 
 
         Button(width=11, height = 4, text="=", relief = "flat", bg = "white", command = self.solve).place(x =270, y =350)
-        Button(width=11, height = 4, text="C", relief = "flat", command = self.clear()).place(x =0, y =350)
+        Button(width=11, height = 4, text="C", relief = "flat", command = self.clear).place(x =0, y =350)
 
     def show(self, value):
         self.entry_value += str(value)
