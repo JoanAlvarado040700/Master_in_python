@@ -40,6 +40,7 @@ cab.pack_propagate(False)
 
 # ----------- Ingreso de datos 
 texto= Label(cab,text="Ingresa un texto:")
+
 texto.pack(side="top", anchor=CENTER)
 
 
