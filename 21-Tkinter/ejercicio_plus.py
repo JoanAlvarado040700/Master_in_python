@@ -1,5 +1,39 @@
 from tkinter import *
 from tkinter import messagebox as ms
+
+
+class Calculadora: 
+
+    def __init__(self,alerta):
+        self.numero1 = StringVar()
+        self.numero2 = StringVar()
+        self.resultado = StringVar()
+        self.alerta = alerta
+   
+    def sumar(self):
+            try:
+                    self.resultado.set(self.float(self.numero1.get()) + self.float(self.numero2.get()))
+            except:
+                    self.alerta.showerror("Error", "Introduce solo numeros")
+            
+    def resta(self):
+            try:
+                    self.resultado.set(self.float(self.numero1.get()) - self.float(self.numero2.get()))
+            except:
+                    self.alerta.showerror("Error", "Introduce solo numeros")
+    def multiplicar(self):
+            try:
+                    self.resultado.set(self.float(self.numero1.get()) * self.float(self.numero2.get()))
+            except:
+                    self.alerta.showerror("Error", "Introduce solo numeros")
+    def dividir(self):
+            try:
+                    self.resultado.set(self.float(self.numero1.get()) / self.float(self.numero2.get()))
+            except:
+                    self.alerta.showerror("Error", "Introduce solo numeros")
+    def mostrar(self):
+            self.alerta.showinfo("Resultados","El resultado de la operacion es: {self.resultado.get()} ")
+
 ventana = Tk()
 ventana.geometry("700x200")
 ventana.resizable(False,False)
@@ -7,6 +41,9 @@ ventana.config(
         relief= "groove",
         bd = 3
 )
+
+calculadora = Calculadora(ms)
+
 # -------------------  Cabecera ----------------
 cab = Frame(ventana, width=200, height=50)
 cab.config(
@@ -69,41 +106,10 @@ texto.place(x=10, y= 8)
 
 
 
-def sumar():
-        try:
-                resultado.set(float(numero1.get()) + float(numero2.get()))
-        except:
-                ms.showerror("Error", "Introduce solo numeros")
-        
-def resta():
-        try:
-                resultado.set(float(numero1.get()) - float(numero2.get()))
-        except:
-                ms.showerror("Error", "Introduce solo numeros")
-def multiplicar():
-        try:
-                resultado.set(float(numero1.get()) * float(numero2.get()))
-        except:
-                ms.showerror("Error", "Introduce solo numeros")
-def dividir():
-        try:
-                resultado.set(float(numero1.get()) / float(numero2.get()))
-        except:
-                ms.showerror("Error", "Introduce solo numeros")
-def mostrar():
-        ms.showinfo("Resultados","El resultado de la operacion es: {resultado.get()} ")
-
-
-numero1 = StringVar()
-numero2 = StringVar()
-
-resultado = StringVar()
-
-
 #-------------------------------------------
 
 
-num = Entry(cuadro,bd= 2, textvariable = numero1 ) # --------- > Dato 1
+num = Entry(cuadro,bd= 2, textvariable = calculadora.numero1 ) # --------- > Dato 1
 
 num.place(x = 150, y= 10) # Entrada de texto
 
@@ -116,7 +122,7 @@ texto.config(
 )
 texto.place(x=10, y= 55)
 
-num2 = Entry(cuadro,bd= 2, textvariable = numero2)
+num2 = Entry(cuadro,bd= 2, textvariable = calculadora.numero2)
 
 num2.place(x = 150, y= 57) 
 
@@ -127,16 +133,16 @@ num2.place(x = 150, y= 57)
 
 
 
-boton = Button(cuadro, bd=5, text= "Suma ", width=8, height=2, activebackground="sky blue", command= sumar)
+boton = Button(cuadro, bd=5, text= "Suma ", width=8, height=2, activebackground="sky blue", command= calculadora.sumar)
 boton.place(x= 20, y=90)
 
-boton = Button(cuadro, bd=5, text= "Resta",width=8, height=2,activebackground="sky blue", command= resta)
+boton = Button(cuadro, bd=5, text= "Resta",width=8, height=2,activebackground="sky blue", command= calculadora.resta)
 boton.place(x= 95, y=90)
 
-boton = Button(cuadro, bd=5, text= "Multiplicar",width=8, height=2,activebackground="sky blue", command = multiplicar)
+boton = Button(cuadro, bd=5, text= "Multiplicar",width=8, height=2,activebackground="sky blue", command = calculadora.multiplicar)
 boton.place(x= 170, y=90)
 
-boton = Button(cuadro, bd=5, text= "Dividir",width=8, height=2,activebackground="sky blue", command = dividir)
+boton = Button(cuadro, bd=5, text= "Dividir",width=8, height=2,activebackground="sky blue", command = calculadora.dividir)
 boton.place(x= 245, y=90)
 
 #  *****************************************************************************
@@ -153,7 +159,7 @@ cuadro.pack_propagate(False)
 
 #-----------  salida de resultados ---------------------
 
-texto = Label(cuadro, textvariable = resultado)
+texto = Label(cuadro, textvariable = calculadora.resultado)
 texto.config(
         fg = "white",
         bg = "#084256645",
