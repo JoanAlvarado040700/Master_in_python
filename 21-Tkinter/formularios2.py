@@ -63,7 +63,10 @@ def MostrarProfe():
 def marcar():
         marcado.config(text = opc.get())
 
+# ------------------------------
 
+def seleccionar():
+        eleccion.config(text = opcion.get())
 
 # -------------------------------------------------
 # Checkbutton
@@ -100,7 +103,6 @@ Mostrar.place(x = 10, y = 172 )
 # ------------------------------- RADIO BUTTON --------------------------------
 
 opc = StringVar()
-
 opc.set(None)
 Label(ventana, text = "Cual es tu genero? ",font = ("Arial",14)).place(x = 10, y= 220)
 
@@ -114,4 +116,23 @@ Radiobutton(ventana,
         ).place(x = 10, y= 294)
 marcado = Label(ventana)
 marcado.place(x = 10, y = 330)
+
+
+# ----------------------------------------------------------------
+# -------------------------------- OPTION MENU --------------------------------
+
+
+Label(ventana, text = "Selecciona una opcion ",font = ("Arial",14)).place(x = 250, y= 220)
+opcion = StringVar()
+opcion.set("Opcion 1")
+
+
+select =  OptionMenu(ventana, opcion, "opcion 1", "opcion 2", "opcion 3", "opcion 4")
+select.place(x = 250, y = 257)
+Button(ventana, text = "ver", command = seleccionar).place(x = 430, y = 300)
+
+eleccion = Label(ventana)
+eleccion.place(x = 250, y = 300)
+
+
 ventana.mainloop()
