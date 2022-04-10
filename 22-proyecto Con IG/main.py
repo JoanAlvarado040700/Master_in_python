@@ -1,5 +1,5 @@
 from tkinter import *
-
+from tkinter import ttk
 '''
 
 Crear un programa que tenga:
@@ -9,14 +9,17 @@ Crear un programa que tenga:
 -Un menu (Inicio, añadir, info, Salir), -------- > listo
 -Diferentes pantallas,listo 
 -Formulario de añadir productos, -------- > listo
-- Guardar datos temporalmente
--Mostrar datos listados 
+- Guardar datos temporalmente, -------- > listo
+-Mostrar datos listados, -------- > listo
 opcion salir, listo 
 '''
 
 # Ventana 
 ventana = Tk()
-ventana.geometry("350x450")
+ventana.geometry("420x450")
+ventana.config(
+    bg = "lightBlue2"
+)
 ventana.title("Proyecto master en python")
 ventana.resizable(0,0)
 
@@ -32,24 +35,20 @@ ventana.resizable(0,0)
 def home():
     
     home_label.config(
-        fg= "white",
-        bg= "black",
+        fg= "black",
+        bg= "cyan4",
         font = ("Consola",30),
-        padx = 120, pady = 20
+        padx = 163, pady = 40
     )
 
 
-    home_label.place(x = 10, y = 10)  
-    product_box.config(bg = "lightBlue1")
-    product_box.place(x = 0, y = 0)
+    home_label.place(x = 1, y = 1)  
+    product_box.place(x = 5, y =105)
 
     for product in products:
         if len(product) == 3:
             product.append("Añadido!")
-            Label(product_box, text= product[0]).place(x = 50, y = 120)
-            Label(product_box, text= product[1]).place(x = 50, y = 150)
-            Label(product_box, text= product[2]).place(x = 50, y = 170)
-            Label(product_box, text="-------------------------").place(x = 10, y = 190)
+            product_box.insert("", 0, text = product [0], value = (product[1]))
 
 
 
@@ -64,19 +63,22 @@ def add():
     # Encabezando
 
     add_label.config(
-        fg= "white",
-        bg= "black",
+        fg= "black",
+        bg= "steel blue",
         font = ("Consola",30),
-        padx = 25, pady = 20
+        padx = 70, pady = 22
     )
 
     add_description_entry.config(
-        width= 20, height= 5,
+        width= 24, height= 5,
         font = ("Consola",15),
-        padx = 10, pady = 18
+        padx = 20, pady = 18
     )
+    add_name_label.config(bg = "light blue")
+    add_price_label.config(bg = "light blue")
+    add_description_label.config(bg = "light blue")
 
-    
+    boton.config(bg = "dodger blue")
     #Formularios 
     marco.config(bg = "light blue")
 
@@ -92,15 +94,15 @@ def add():
     add_description_entry.place(x = 100, y = 150)
 
     #--------------------------------------------------------------
-    add_label.place(x = 10, y = 0)
+    add_label.place(x = 1, y = 1)
     home_label.place_forget()
     info_label.place_forget()
     product_box.place_forget()
     # ----------------------------------------------------------------
 
-    boton.place(x = 290, y = 310 )
+    boton.place(x = 340, y = 310 )
 def info():
-    
+    info_label.config(bg ="lightBlue2" )
     info_label.place(x = 10, y = 10)
 
     home_label.place_forget()
@@ -132,16 +134,22 @@ price_data = StringVar()
 
 
 # Definir campos de pantallas (INICIO)
-product_box = Frame(ventana, width=350, height= 450)
+#product_box = Frame(ventana, width=50)
+
+
+
 home_label = Label(ventana, text = "Inicio")
 
 
+product_box = ttk.Treeview(height = 12, columns = 2)
 
+product_box.heading("#0", text = "Producto")
+product_box.heading("#1", text = "Precio")
 
 
 #Definir campor de pantalla (ADD)
 
-marco = Frame(ventana, width = 350, height = 450)
+marco = Frame(ventana, width = 419, height = 450)
 add_label = Label(marco, text = "Añadir producto")
 
 # Campos de formularios 
