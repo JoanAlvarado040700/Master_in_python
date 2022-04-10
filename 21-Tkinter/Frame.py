@@ -20,10 +20,10 @@ marco_padre.pack(side=BOTTOM,fill=X,expand=YES)
 marco = Frame(marco_padre, width=200, height=200)
 
 marco.config(
-    bg="red"
+    bg="pink"
     )
 
-marco.pack(side="left",anchor=SW)
+marco.place(x = 100, y = 0)
 
 marco = Frame(marco_padre, width=200, height=200)
 
