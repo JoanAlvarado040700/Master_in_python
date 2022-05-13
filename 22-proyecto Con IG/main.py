@@ -195,6 +195,4 @@ ventana.config(menu = menu)
 
 
 
-
-
 ventana.mainloop()
